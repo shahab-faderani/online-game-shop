@@ -1,6 +1,7 @@
 import { Grid, GridItem, Theme } from "@chakra-ui/react";
 import NavigationBar from "./components/NavigationBar";
 import { useColorMode } from "@/components/ui/color-mode";
+import GameGrid from "./components/GameGrid";
 
 const App = () => {
   const { colorMode } = useColorMode();
@@ -19,7 +20,7 @@ const App = () => {
         <GridItem area="aside" display={{ base: "none", lg: "block" }}>
           Aside
         </GridItem>
-        <GridItem area="main">Main</GridItem>
+        <GridItem area="main"><GameGrid/></GridItem>
       </Grid>
     </Theme>
   );
