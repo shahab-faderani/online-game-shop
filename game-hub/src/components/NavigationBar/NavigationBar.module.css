@@ -1,3 +1,8 @@
 .Logo {
   height: 4rem;
 }
+
+.HSack {
+  justify-content: space-between;
+  padding: 1rem;
+}

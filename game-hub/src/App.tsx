@@ -1,24 +1,27 @@
-import { Grid, GridItem} from "@chakra-ui/react";
+import { Grid, GridItem, Theme } from "@chakra-ui/react";
 import NavigationBar from "./components/NavigationBar";
+import { useColorMode } from "@/components/ui/color-mode";
 
 const App = () => {
+  const { colorMode } = useColorMode();
+
   return (
-    <Grid
-      templateAreas={{
-        lg: `"nav nav" "aside main"`,
-        base: `"nav" "main"`,
-      }}
-    >
-      <GridItem area="nav">
-        <NavigationBar/>
-      </GridItem>
-      <GridItem area="aside" background="gold" display={{ base: "none", lg: "block" }}>
-        Aside
-      </GridItem>
-      <GridItem area="main" background="blue">
-        Main
-      </GridItem>
-    </Grid>
+    <Theme appearance={colorMode} colorPalette="teal">
+      <Grid
+        templateAreas={{
+          lg: `"nav nav" "aside main"`,
+          base: `"nav" "main"`,
+        }}
+      >
+        <GridItem area="nav">
+          <NavigationBar />
+        </GridItem>
+        <GridItem area="aside" display={{ base: "none", lg: "block" }}>
+          Aside
+        </GridItem>
+        <GridItem area="main">Main</GridItem>
+      </Grid>
+    </Theme>
   );
 };
 
