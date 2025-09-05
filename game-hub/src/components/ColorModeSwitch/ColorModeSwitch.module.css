@@ -1,0 +1,54 @@
+.sunRise {
+  animation: sunRiseMoonDown 1.2s ease forwards;
+  color: currentColor;
+}
+
+.moonUp {
+  animation: moonUpSunDown 1.2s ease forwards;
+  color: currentColor;
+}
+
+@keyframes sunRiseMoonDown {
+  0% {
+    transform: translateY(0px) rotate(0deg);
+    opacity: 1;
+    color: inherit;
+  }
+  50% {
+    transform: translateY(20px) rotate(90deg);
+    opacity: 0;
+    color: inherit;
+  }
+
+  50.01% {
+    transform: translateY(20px) rotate(-90deg);
+    opacity: 0;
+    color: inherit;
+  }
+  100% {
+    transform: translateY(0px) rotate(0deg);
+    opacity: 1;
+    color: gold;
+  }
+}
+
+@keyframes moonUpSunDown {
+  0% {
+    transform: translateY(0px) rotate(0deg);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(20px) rotate(-90deg);
+    opacity: 0;
+  }
+
+  50.01% {
+    transform: translateY(20px) rotate(90deg);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0px) rotate(0deg);
+    opacity: 1;
+    color: rgb(247, 240, 240);
+  }
+}
