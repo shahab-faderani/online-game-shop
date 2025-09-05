@@ -1,5 +1,7 @@
 import { Text } from "@chakra-ui/react";
 import useGames from "@/hooks/useGames";
+import GameCard from "../GameCard";
+import styles from "./GameGrid.module.css";
 
 const GameGrid = () => {
   const { games, error } = useGames();
@@ -7,11 +9,11 @@ const GameGrid = () => {
   return (
     <>
       {error && <Text>{error}</Text>}
-      <ul>
-        {games.map(({ id, name }) => (
-          <li key={id}>{name}</li>
+      <div className={styles.container}>
+        {games.map((game) => (
+          <GameCard key={game.id} game={game} />
         ))}
-      </ul>
+      </div>
     </>
   );
 };
