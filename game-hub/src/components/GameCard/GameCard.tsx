@@ -4,6 +4,7 @@ import styles from "./GameCard.module.css";
 import { useColorMode } from "../../components/ui/color-mode";
 import PlatformIconList from "../PlatformIconList";
 import CreditScore from "../CreditScore";
+import getCroppedImageUrl from "../../services/image-url";
 
 interface Props {
   game: Game;
@@ -20,7 +21,7 @@ const GameCard = ({ game }: Props) => {
   return (
     <div className={`${styles.card} ${cardClass}`} tabIndex={0}>
       <img
-        src={game.background_image}
+        src={getCroppedImageUrl( game.background_image)}
         alt={game.name}
         className={styles.image}
       />
