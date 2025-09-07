@@ -1,0 +1,13 @@
+.card {
+  width: 300px;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.skeleton{
+    height: 180px;
+}
+
+.skeletonText{
+    margin-top: 0.5rem;
+}

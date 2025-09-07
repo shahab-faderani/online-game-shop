@@ -38,7 +38,7 @@ const PlatformIconList = ({ platforms }: Props) => {
   return (
     <HStack>
       {platforms.map((platform) => (
-        <Icon as={iconMap[platform.slug]} className={colorMode === 'light' ? styles.lightModeIcon : styles.darkModeIcon}/>
+        <Icon as={iconMap[platform.slug]} className={colorMode === 'light' ? styles.lightModeIcon : styles.darkModeIcon} key={platform.id}/>
       ))}
     </HStack>
   );
