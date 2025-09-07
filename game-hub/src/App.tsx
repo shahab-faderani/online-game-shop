@@ -1,6 +1,6 @@
 import { Grid, GridItem, Theme } from "@chakra-ui/react";
 import NavigationBar from "./components/NavigationBar";
-import { useColorMode } from "@/components/ui/color-mode";
+import { useColorMode } from "./components/ui/color-mode";
 import GameGrid from "./components/GameGrid";
 
 const App = () => {

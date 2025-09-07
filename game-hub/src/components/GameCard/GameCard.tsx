@@ -1,6 +1,8 @@
+import { Text } from "@chakra-ui/react";
 import { Game } from "../../hooks/useGames";
 import styles from "./GameCard.module.css";
-import { useColorMode } from "@/components/ui/color-mode";
+import { useColorMode } from "../../components/ui/color-mode";
+import PlatformIconList from "../PlatformIconList"
 
 interface Props {
   game: Game;
@@ -23,6 +25,7 @@ const GameCard = ({ game }: Props) => {
       />
       <div className={bodyClass}>
         <h3 className={headingClass}>{game.name}</h3>
+        <PlatformIconList platforms={game.parent_platforms.map( p => p.platform)} />
       </div>
     </div>
   );
