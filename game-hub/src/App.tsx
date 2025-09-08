@@ -3,9 +3,12 @@ import NavigationBar from "./components/NavigationBar";
 import { useColorMode } from "./components/ui/color-mode";
 import GameGrid from "./components/GameGrid";
 import GenreList from "./components/GenreList";
+import { useState } from "react";
+import { Genre } from "./hooks/useGenres";
 
 const App = () => {
   const { colorMode } = useColorMode();
+  const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null);
 
   return (
     <Theme appearance={colorMode} colorPalette="teal">
@@ -22,11 +25,15 @@ const App = () => {
         <GridItem area="nav">
           <NavigationBar />
         </GridItem>
-        <GridItem area="aside" display={{ base: "none", lg: "block" }} paddingX={5}>
-          <GenreList />
+        <GridItem
+          area="aside"
+          display={{ base: "none", lg: "block" }}
+          paddingX={5}
+        >
+          <GenreList onSelectGenre={(genre) => setSelectedGenre(genre)} />
         </GridItem>
         <GridItem area="main" paddingX={5}>
-          <GameGrid />
+          <GameGrid selectedGenre={selectedGenre} />
         </GridItem>
       </Grid>
     </Theme>
