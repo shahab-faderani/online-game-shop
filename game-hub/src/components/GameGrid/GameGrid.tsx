@@ -6,7 +6,7 @@ import styles from "./GameGrid.module.css";
 
 const GameGrid = () => {
   const { data: games, error, isLoading } = useGames();
-  const skeletons = [1, 2, 3, 4, 5, 6];
+  const skeletons = Array(12).fill(0).map((_, index) => index);
 
   return (
     <>

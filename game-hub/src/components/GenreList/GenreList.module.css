@@ -1,0 +1,15 @@
+.image {
+  width: 5rem;
+  height: 5rem;
+  border-radius: 0.5rem;
+}
+
+.listItem {
+  margin-bottom: 1rem;
+}
+
+.title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-left: 1rem;
+}

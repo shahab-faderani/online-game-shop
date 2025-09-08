@@ -14,14 +14,18 @@ const App = () => {
           lg: `"nav nav" "aside main"`,
           base: `"nav" "main"`,
         }}
+        templateColumns={{
+          lg: "18rem 1fr",
+          base: "1fr",
+        }}
       >
         <GridItem area="nav">
           <NavigationBar />
         </GridItem>
-        <GridItem area="aside" display={{ base: "none", lg: "block" }}>
+        <GridItem area="aside" display={{ base: "none", lg: "block" }} paddingX={5}>
           <GenreList />
         </GridItem>
-        <GridItem area="main">
+        <GridItem area="main" paddingX={5}>
           <GameGrid />
         </GridItem>
       </Grid>
