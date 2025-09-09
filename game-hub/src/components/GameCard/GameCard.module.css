@@ -2,46 +2,44 @@
   border-radius: 12px;
   overflow: hidden;
   cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.3s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease,
+    background-color 0.3s ease;
+  caret-color: transparent;
 }
 
-/* Hover: smooth lift only */
-.lightCard:hover {
+.card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
 }
 
-.darkCard:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 0 15px rgb(247, 240, 240);
+.card:focus {
+  animation: cardFocus 0.1s ease;
 }
 
-/* Focus: lift + tiny scale + vibration */
 .lightCard:focus {
-  animation: lightCardFocus 0.1s ease;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
 }
 
 .darkCard:focus {
-  animation: darkCardFocus 0.1s ease;
   box-shadow: 0 0 15px rgb(247, 240, 240);
 }
 
 /* Keyframes: lift + scale + small horizontal shake */
-@keyframes lightCardFocus {
-  0%   { transform: translateY(-5px) scale(1); }
-  25%  { transform: translateY(-5px) scale(1.03) translateX(-1px); }
-  50%  { transform: translateY(-5px) scale(1.03) translateX(1px); }
-  75%  { transform: translateY(-5px) scale(1.03) translateX(-1px); }
-  100% { transform: translateY(-5px) scale(1); }
-}
-
-@keyframes darkCardFocus {
-  0%   { transform: translateY(-5px) scale(1); }
-  25%  { transform: translateY(-5px) scale(1.03) translateX(-1px); }
-  50%  { transform: translateY(-5px) scale(1.03) translateX(1px); }
-  75%  { transform: translateY(-5px) scale(1.03) translateX(-1px); }
-  100% { transform: translateY(-5px) scale(1); }
+@keyframes cardFocus {
+  0% {
+    transform: translateY(-5px) scale(1);
+  }
+  25% {
+    transform: translateY(-5px) scale(1.03) translateX(-1px);
+  }
+  50% {
+    transform: translateY(-5px) scale(1.03) translateX(1px);
+  }
+  75% {
+    transform: translateY(-5px) scale(1.03) translateX(-1px);
+  }
+  100% {
+    transform: translateY(-5px) scale(1);
+  }
 }
 
 .image {
@@ -49,31 +47,22 @@
   object-fit: cover;
 }
 
-.lightBody {
+.body {
   padding: 12px 16px;
+}
+
+.lightBody {
   background-color: #e2e8f0;
 }
 
-.lightHeading {
-  font-size: 1.1rem;
-  font-weight: 600;
-  margin: 0;
-  color: #333;
-  text-align: center;
-  height: 3rem;
-  margin-bottom: 1rem;
-}
-
 .darkBody {
-  padding: 12px 16px;
   background-color: #1a202c;
 }
 
-.darkHeading {
+.heading {
   font-size: 1.1rem;
   font-weight: 600;
   margin: 0;
-  color: #f0f0f0;
   text-align: center;
   height: 3rem;
   margin-bottom: 1rem;
