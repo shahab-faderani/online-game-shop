@@ -13,7 +13,7 @@ const CreditScore = ({ score }: Props) => {
         color = "yellow";
     }
     
-  return <Badge colorPalette={color} className={styles.Badge}>{score}</Badge>;
+  return score && <Badge colorPalette={color} className={styles.Badge}>{score}</Badge>;
 };
 
 export default CreditScore;
