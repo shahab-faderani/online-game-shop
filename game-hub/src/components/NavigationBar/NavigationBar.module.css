@@ -1,8 +1,9 @@
 .Logo {
-  height: 4rem;
+  height: 5rem;
 }
 
 .HSack {
   justify-content: space-between;
-  padding: 1rem;
+  padding: 1rem 0;
+  caret-color: transparent;
 }

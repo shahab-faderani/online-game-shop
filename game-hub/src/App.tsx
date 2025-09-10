@@ -22,17 +22,20 @@ const App = () => {
           base: "1fr",
         }}
       >
-        <GridItem area="nav">
+        <GridItem area="nav" paddingX={6}>
           <NavigationBar />
         </GridItem>
         <GridItem
           area="aside"
           display={{ base: "none", lg: "block" }}
-          paddingX={5}
+          paddingX={8}
         >
-          <GenreList onSelectGenre={(genre) => setSelectedGenre(genre)} />
+          <GenreList
+            selectedGenre={selectedGenre}
+            onSelectGenre={(genre) => setSelectedGenre(genre)}
+          />
         </GridItem>
-        <GridItem area="main" paddingX={5}>
+        <GridItem area="main" paddingX={8}>
           <GameGrid selectedGenre={selectedGenre} />
         </GridItem>
       </Grid>

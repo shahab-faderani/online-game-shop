@@ -1,15 +1,59 @@
+.card {
+  border-radius: 0.75rem;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  margin-bottom: 1rem;
+  display: inline-block;
+  white-space: nowrap;
+  caret-color: transparent;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card:focus .image,
+.activeCard .image {
+  transform: scale(1.15);
+}
+
+.card:focus,
+.activeCard {
+  transform: translateY(-5px) scale(1.15);
+}
+
+.lightCard:focus,
+.lightCard.activeCard {
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+}
+
+.darkCard:focus,
+.darkCard.activeCard {
+  box-shadow: 0 0 15px rgb(247, 240, 240);
+}
+
 .image {
   width: 5rem;
   height: 5rem;
-  border-radius: 0.5rem;
+  border-radius: 0.75rem;
+  object-fit: cover;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 0.5rem;
 }
 
-.listItem {
-  margin-bottom: 1rem;
+.body {
+  display: inline-block;
+  vertical-align: middle;
+  max-width: calc(100% - 5rem);
 }
 
-.title {
-  font-size: 1.2rem;
-  font-weight: bold;
-  margin-left: 1rem;
+.heading {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }

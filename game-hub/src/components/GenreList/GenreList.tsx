@@ -1,15 +1,21 @@
 import useGenres, { Genre } from "@/hooks/useGenres";
 import getCroppedImageUrl from "../../services/image-url";
-import { Button, HStack, Image, VStack } from "@chakra-ui/react";
+import { Card, Image, VStack } from "@chakra-ui/react";
+import { useColorMode } from "../../components/ui/color-mode";
 import GenreListSkeleton from "../GenreListSkeleton";
 import styles from "./GenreList.module.css";
 
 interface Props {
   onSelectGenre: (genre: Genre) => void;
+  selectedGenre: Genre | null;
 }
 
-const GenreList = ({ onSelectGenre }: Props) => {
+const GenreList = ({ onSelectGenre, selectedGenre }: Props) => {
   const { data: genres, error, isLoading } = useGenres();
+  const { colorMode } = useColorMode();
+
+  const cardClass = colorMode === "light" ? styles.lightCard : styles.darkCard;
+
   const skeletons = Array(20)
     .fill(0)
     .map((_, index) => index);
@@ -21,21 +27,22 @@ const GenreList = ({ onSelectGenre }: Props) => {
       {isLoading
         ? skeletons.map((skeleton) => <GenreListSkeleton key={skeleton} />)
         : genres.map((genre) => (
-            <HStack key={genre.id} className={styles.listItem}>
+            <Card.Root
+              key={genre.id}
+              className={`${styles.card} ${cardClass} ${
+                genre.id === selectedGenre?.id ? styles.activeCard : ""
+              }`}
+              onClick={() => onSelectGenre(genre)}
+              tabIndex={0}
+            >
               <Image
                 className={styles.image}
                 src={getCroppedImageUrl(genre.image_background)}
               />
-              <Button
-                className={styles.title}
-                variant="plain"
-                color="ButtonText"
-                _hover={{ textDecoration: "underline" }}
-                onClick={() => onSelectGenre(genre)}
-              >
-                {genre.name}
-              </Button>
-            </HStack>
+              <Card.Body className={styles.body}>
+                <h3 className={styles.heading}>{genre.name}</h3>
+              </Card.Body>
+            </Card.Root>
           ))}
     </VStack>
   );
