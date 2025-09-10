@@ -9,7 +9,7 @@
   caret-color: transparent;
 }
 
-.card:hover {
+.card:hover:not(.activeCard):not(:focus) {
   transform: translateY(-5px);
 }
 
