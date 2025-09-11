@@ -26,7 +26,7 @@ const GenreList = ({ onSelectGenre, selectedGenre }: Props) => {
     <VStack align="stretch">
       {isLoading
         ? skeletons.map((skeleton) => <GenreListSkeleton key={skeleton} />)
-        : genres.map((genre) => (
+        : genres.slice(0, 13).map((genre) => (
             <Card.Root
               key={genre.id}
               className={`${styles.card} ${cardClass} ${
