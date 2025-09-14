@@ -55,3 +55,7 @@
     box-shadow: 0 0 15px rgb(247, 240, 240);
   }
 }
+
+.text {
+  white-space: nowrap;
+}

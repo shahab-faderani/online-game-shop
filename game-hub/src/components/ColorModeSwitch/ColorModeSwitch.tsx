@@ -25,13 +25,16 @@ const ColorModeSwitch = () => {
         <IconButton
           onClick={toggleColorMode}
           variant="outline"
-          size="sm"
+          borderRadius="10px"
+          size="2xl"
           aria-label="Toggle color theme"
           className={colorMode === "light" ? styles.sunRise : styles.moonUp}
         >
           {delayedMode === "light" ? <LuSun /> : <LuMoon />}
         </IconButton>
-        <Text>{colorMode === "light" ? "Light Mode" : "Dark Mode"}</Text>
+        <Text className={styles.text}>
+          {colorMode === "light" ? "Light Mode" : "Dark Mode"}
+        </Text>
       </ClientOnly>
     </Flex>
   );
