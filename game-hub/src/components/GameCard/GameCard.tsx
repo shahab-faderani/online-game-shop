@@ -24,13 +24,13 @@ const GameCard = ({ game }: Props) => {
         className={styles.image}
       />
       <div className={`${styles.body} ${bodyClass}`}>
-        <h3 className={styles.heading}>{game.name}</h3>
-        <HStack justifyContent={"space-between"}>
+        <HStack justifyContent={"space-between"} marginBottom="1rem">
           <PlatformIconList
             platforms={game.parent_platforms.map((p) => p.platform)}
           />
           <CreditScore score={game.metacritic} />
         </HStack>
+        <h3 className={styles.heading}>{game.name}</h3>
       </div>
     </div>
   );
