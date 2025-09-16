@@ -5,6 +5,7 @@ import { useColorMode } from "../../components/ui/color-mode";
 import PlatformIconList from "../PlatformIconList";
 import CreditScore from "../CreditScore";
 import getCroppedImageUrl from "../../services/image-url";
+import Emoji from "../Emoji";
 
 interface Props {
   game: Game;
@@ -30,7 +31,7 @@ const GameCard = ({ game }: Props) => {
           />
           <CreditScore score={game.metacritic} />
         </HStack>
-        <h3 className={styles.heading}>{game.name}</h3>
+        <h3 className={styles.heading}>{game.name} <Emoji rating={game.rating_top}/></h3>
       </div>
     </div>
   );
