@@ -49,11 +49,17 @@
   max-width: calc(100% - 5rem);
 }
 
-.heading {
+.title {
   font-size: 1.1rem;
   font-weight: 600;
   margin: 0;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.heading {
+  margin-top: 1rem;
+  font-size: 2rem;
+  margin-bottom: 2rem;
 }

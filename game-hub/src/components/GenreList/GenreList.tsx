@@ -1,6 +1,6 @@
 import useGenres, { Genre } from "@/hooks/useGenres";
 import getCroppedImageUrl from "../../services/image-url";
-import { Card, Image, VStack } from "@chakra-ui/react";
+import { Card, Heading, Image, VStack } from "@chakra-ui/react";
 import { useColorMode } from "../../components/ui/color-mode";
 import GenreListSkeleton from "../GenreListSkeleton";
 import styles from "./GenreList.module.css";
@@ -23,6 +23,8 @@ const GenreList = ({ onSelectGenre, selectedGenre }: Props) => {
   if (error) return null;
 
   return (
+    <> 
+    <Heading className={styles.heading} >Genres</Heading>
     <VStack align="stretch">
       {isLoading
         ? skeletons.map((skeleton) => <GenreListSkeleton key={skeleton} />)
@@ -37,14 +39,16 @@ const GenreList = ({ onSelectGenre, selectedGenre }: Props) => {
             >
               <Image
                 className={styles.image}
+                objectFit="cover"
                 src={getCroppedImageUrl(genre.image_background)}
               />
               <Card.Body className={styles.body}>
-                <h3 className={styles.heading}>{genre.name}</h3>
+                <h3 className={styles.title}>{genre.name}</h3>
               </Card.Body>
             </Card.Root>
           ))}
-    </VStack>
+    </VStack> </>
+    
   );
 };
 
