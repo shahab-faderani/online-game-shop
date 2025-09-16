@@ -6,7 +6,7 @@ import styles from "./GameGrid.module.css";
 import { GameQuery } from "@/App";
 
 interface Props {
-  gameQuery: GameQuery
+  gameQuery: GameQuery;
 }
 
 const GameGrid = ({ gameQuery }: Props) => {
@@ -15,16 +15,15 @@ const GameGrid = ({ gameQuery }: Props) => {
     .fill(0)
     .map((_, index) => index);
 
+  if (error) return <Text>{error}</Text>;
+
   return (
-    <>
-      {error && <Text>{error}</Text>}
-      <div className={styles.container}>
-        {isLoading &&
-          skeletons.map((skeleton) => <GameCardSkeleton key={skeleton} />)}
-        {!isLoading &&
-          games.map((game) => <GameCard key={game.id} game={game} />)}
-      </div>
-    </>
+    <div className={styles.container}>
+      {isLoading &&
+        skeletons.map((skeleton) => <GameCardSkeleton key={skeleton} />)}
+      {!isLoading &&
+        games.map((game) => <GameCard key={game.id} game={game} />)}
+    </div>
   );
 };
 

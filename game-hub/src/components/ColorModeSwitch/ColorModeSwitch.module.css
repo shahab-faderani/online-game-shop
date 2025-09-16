@@ -1,11 +1,21 @@
 .sunRise {
-  animation: sunRiseMoonDown .9s ease forwards;
+  animation: sunRiseMoonDown 0.9s ease forwards;
   color: currentColor;
+  background-color: unset;
 }
 
 .moonUp {
-  animation: moonUpSunDown .9s ease forwards;
+  animation: moonUpSunDown 0.9s ease forwards;
   color: currentColor;
+  background-color: unset;
+}
+
+.wrapper {
+  transition: transform 0.6s ease; /* smooth, slow */
+}
+
+.wrapper:hover {
+  transform: scale(1.15);
 }
 
 @keyframes sunRiseMoonDown {

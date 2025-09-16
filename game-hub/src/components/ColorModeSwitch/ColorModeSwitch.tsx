@@ -20,7 +20,7 @@ const ColorModeSwitch = () => {
   const delayedMode = useDelayedValue(colorMode, 100);
 
   return (
-    <Flex p={4} align="center" gap={3}>
+    <Flex p={4} align="center" gap={3} className={styles.wrapper}>
       <ClientOnly fallback={<Skeleton boxSize="8" />}>
         <IconButton
           onClick={toggleColorMode}
