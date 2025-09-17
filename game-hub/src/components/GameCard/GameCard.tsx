@@ -1,4 +1,4 @@
-import { HStack, Image } from "@chakra-ui/react";
+import { HStack, Image, Card } from "@chakra-ui/react";
 import { Game } from "../../hooks/useGames";
 import styles from "./GameCard.module.css";
 import { useColorMode } from "../../components/ui/color-mode";
@@ -18,13 +18,13 @@ const GameCard = ({ game }: Props) => {
   const bodyClass = colorMode === "light" ? styles.lightBody : styles.darkBody;
 
   return (
-    <div className={`${styles.card} ${cardClass}`} tabIndex={0}>
+    <Card.Root className={`${styles.card} ${cardClass}`}>
       <Image
         src={getCroppedImageUrl(game.background_image)}
         alt={game.name}
         className={styles.image}
       />
-      <div className={`${styles.body} ${bodyClass}`}>
+      <Card.Body className={`${styles.body} ${bodyClass}`}>
         <HStack justifyContent={"space-between"} marginBottom="1rem">
           <PlatformIconList
             platforms={game.parent_platforms.map((p) => p.platform)}
@@ -32,8 +32,8 @@ const GameCard = ({ game }: Props) => {
           <CreditScore score={game.metacritic} />
         </HStack>
         <h3 className={styles.heading}>{game.name} <Emoji rating={game.rating_top}/></h3>
-      </div>
-    </div>
+      </Card.Body>
+    </Card.Root>
   );
 };
 

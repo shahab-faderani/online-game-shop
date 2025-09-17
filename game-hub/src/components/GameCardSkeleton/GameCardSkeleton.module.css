@@ -1,12 +1,11 @@
 .card {
   border-radius: 12px;
   overflow: hidden;
+  max-width: 17rem;
+  height: 18.8rem;
 }
 
 .skeleton {
-  height: 200px;
+  height: 10rem;
 }
 
-.skeletonText {
-  margin-top: 0.5rem;
-}

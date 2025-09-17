@@ -1,14 +1,14 @@
-import { Skeleton, SkeletonText } from "@chakra-ui/react";
+import { Skeleton, SkeletonText, Card } from "@chakra-ui/react";
 import styles from "./GameCardSkeleton.module.css";
 
 const GameCardSkeleton = () => {
   return (
-    <div className={styles.card}>
+    <Card.Root className={styles.card}>
       <Skeleton className={styles.skeleton}></Skeleton>
-      <div>
-        <SkeletonText className={styles.skeletonText}></SkeletonText>
-      </div>
-    </div>
+      <Card.Body>
+        <SkeletonText/>
+      </Card.Body>
+    </Card.Root>
   );
 };
 

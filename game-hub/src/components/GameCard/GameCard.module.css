@@ -5,6 +5,7 @@
   transition: transform 0.2s ease, box-shadow 0.2s ease,
     background-color 0.3s ease;
   caret-color: transparent;
+  max-width: 17rem;
 }
 
 .card:hover {
@@ -64,9 +65,13 @@
   font-weight: 600;
   margin: 0;
   text-align: center;
-  height: 4rem;
-  position: relative;
+  margin-bottom: 2rem;
+  line-height: 1.4; /* control line spacing */
+  max-height: calc(1.4em * 2);
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
   overflow: hidden;
   text-overflow: ellipsis;
-  white-space: nowrap;
+  word-break: break-all;
 }
