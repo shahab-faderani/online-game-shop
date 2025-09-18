@@ -42,7 +42,7 @@ This project demonstrates modern frontend development practices with reusable co
 git clone https://github.com/shahab-faderani/online-game-shop.git
 
 # Navigate to the project folder
-cd online-game-shop
+cd online-game-shop/game-hub
 
 # Install dependencies
 npm install
