@@ -1,11 +1,12 @@
 .card {
   border-radius: 12px;
   overflow: hidden;
-  max-width: 17rem;
-  height: 18.8rem;
+  display: flex;
+  flex-direction: column;
 }
 
-.skeleton {
-  height: 10rem;
+.skeleton,
+.image {
+  aspect-ratio: 16 / 10.45; 
+  width: 100%;
 }
-

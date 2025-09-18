@@ -24,7 +24,7 @@ const App = () => {
   const [gameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery);
 
   return (
-    <Theme appearance={colorMode} colorPalette="teal">
+    <Theme appearance={colorMode} colorPalette="blackAlpha">
       <Grid
         templateAreas={{
           lg: `"nav nav" "aside main"`,

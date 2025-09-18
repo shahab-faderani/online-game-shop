@@ -5,7 +5,7 @@ const GameCardSkeleton = () => {
   return (
     <Card.Root className={styles.card}>
       <Skeleton className={styles.skeleton}></Skeleton>
-      <Card.Body>
+      <Card.Body className={styles.body}>
         <SkeletonText/>
       </Card.Body>
     </Card.Root>

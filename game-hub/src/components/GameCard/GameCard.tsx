@@ -15,7 +15,7 @@ const GameCard = ({ game }: Props) => {
   const { colorMode } = useColorMode();
 
   const cardClass = colorMode === "light" ? styles.lightCard : styles.darkCard;
-  const bodyClass = colorMode === "light" ? styles.lightBody : styles.darkBody;
+
 
   return (
     <Card.Root className={`${styles.card} ${cardClass}`}>
@@ -24,7 +24,7 @@ const GameCard = ({ game }: Props) => {
         alt={game.name}
         className={styles.image}
       />
-      <Card.Body className={`${styles.body} ${bodyClass}`}>
+      <Card.Body className={styles.body}>
         <HStack justifyContent={"space-between"} marginBottom="1rem">
           <PlatformIconList
             platforms={game.parent_platforms.map((p) => p.platform)}
