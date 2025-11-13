@@ -4,8 +4,8 @@ import GameCard from "../GameCard";
 import GameCardSkeleton from "../GameCardSkeleton";
 import styles from "./GameGrid.module.css";
 import { GameQuery } from "@/services/gameService";
-import { Menu, Button } from "@chakra-ui/react";
 import React from "react";
+import InfiniteScroll from "react-infinite-scroll-component";
 
 interface Props {
   gameQuery: GameQuery;
@@ -26,8 +26,16 @@ const GameGrid = ({ gameQuery }: Props) => {
 
   if (error) return <Text>{error.message}</Text>;
 
+  const fetchGamesCount =
+    data?.pages.reduce((total, page) => total + page.results.length, 0) || 0;
+
   return (
-    <>
+    <InfiniteScroll
+      dataLength={fetchGamesCount}
+      next={() => fetchNextPage()}
+      hasMore={!!hasNextPage}
+      loader={<Text>Loading...</Text>}
+    >
       <div className={styles.container}>
         {isLoading &&
           skeletons.map((skeleton) => <GameCardSkeleton key={skeleton} />)}
@@ -40,23 +48,7 @@ const GameGrid = ({ gameQuery }: Props) => {
             </React.Fragment>
           ))}
       </div>
-      {hasNextPage && (
-        <div style={{ marginTop: "1rem" }}>
-          <Menu.Root>
-            <Menu.Trigger asChild>
-              <Button
-                variant="surface"
-                size="lg"
-                onClick={() => fetchNextPage()}
-                disabled={isFetchingNextPage}
-              >
-                {isFetchingNextPage ? "Loading..." : "Load More"}
-              </Button>
-            </Menu.Trigger>
-          </Menu.Root>
-        </div>
-      )}
-    </>
+    </InfiniteScroll>
   );
 };
 
