@@ -3,7 +3,7 @@ import useGames from "@/hooks/useGames";
 import GameCard from "../GameCard";
 import GameCardSkeleton from "../GameCardSkeleton";
 import styles from "./GameGrid.module.css";
-import { GameQuery } from "@/hooks/useGames";
+import { GameQuery } from "@/services/gameService";
 
 interface Props {
   gameQuery: GameQuery;

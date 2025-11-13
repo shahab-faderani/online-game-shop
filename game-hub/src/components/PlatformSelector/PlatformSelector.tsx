@@ -13,7 +13,7 @@ import {
 
 import { MdPhoneIphone } from "react-icons/md";
 import { SiNintendoswitch } from "react-icons/si";
-import { Platform } from "@/hooks/usePlatforms";
+import { Platform } from "@/services/platformService";
 
 interface Props {
   selectedPlatform: Platform | null;

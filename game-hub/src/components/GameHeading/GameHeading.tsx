@@ -1,4 +1,4 @@
-import { GameQuery } from "@/hooks/useGames";
+import { GameQuery } from "@/services/gameService";
 import { Heading } from "@chakra-ui/react";
 import styles from "./GameHeading.module.css";
 

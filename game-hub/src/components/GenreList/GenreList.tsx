@@ -1,5 +1,6 @@
-import useGenres, { Genre } from "@/hooks/useGenres";
+import useGenres from "@/hooks/useGenres";
 import getCroppedImageUrl from "../../services/image-url";
+import { Genre } from "@/services/genreService";
 import { Card, Heading, Image, VStack } from "@chakra-ui/react";
 import { useColorMode } from "../../components/ui/color-mode";
 import GenreListSkeleton from "../GenreListSkeleton";
