@@ -1,6 +1,6 @@
 import { Menu, Portal, Button } from "@chakra-ui/react";
 import { BsChevronBarDown } from "react-icons/bs";
-import usePlatforms from "../../hooks/usePlatforms";
+import usePlatforms, { usePlatform } from "../../hooks/usePlatforms";
 
 import {
   FaWindows,
@@ -20,7 +20,10 @@ interface Props {
   onSelectedPlatform: (platform: Platform) => void;
 }
 
-const PlatformSelector = ({ selectedPlatformId, onSelectedPlatform }: Props) => {
+const PlatformSelector = ({
+  selectedPlatformId,
+  onSelectedPlatform,
+}: Props) => {
   const { data, error } = usePlatforms();
   const iconMap: Record<string, JSX.Element> = {
     android: <FaAndroid />,
@@ -35,9 +38,7 @@ const PlatformSelector = ({ selectedPlatformId, onSelectedPlatform }: Props) => 
 
   if (error) return null;
 
-  const selectedPlatform = data?.results.find(
-    (platform) => platform.id === selectedPlatformId
-  );
+  const selectedPlatform = usePlatform(selectedPlatformId);
 
   return (
     <Menu.Root>

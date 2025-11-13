@@ -8,4 +8,9 @@ const useGenres = () =>
     staleTime: 24 * 60 * 60 * 1000, // 24 hours
   });
 
+export const useGenre = (id?: number) => {
+  const { data: genres } = useGenres();
+  return genres?.results.find((genre) => genre.id === id);
+};
+
 export default useGenres;
