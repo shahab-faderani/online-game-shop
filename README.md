@@ -21,8 +21,10 @@ This project demonstrates modern frontend development practices with reusable co
 * **Filter games** by platform or genre
 * View **game details** (ratings, description, release date)
 * **Dark and light mode toggle**
+* **Infinite scrolling** for seamless game browsing without manual pagination
 * Responsive, mobile-friendly UI
 * Reusable component structure with TypeScript
+* Efficient **server state management and data caching** using React Query
 * Clean, modular code structure for maintainability
 * Deployed live on Vercel
 
