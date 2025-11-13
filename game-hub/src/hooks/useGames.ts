@@ -7,12 +7,14 @@ import { Game } from "@/services/gameService";
 const useGames = (gameQuery: GameQuery) =>
   useInfiniteQuery<FetchResponse<Game>, Error>({
     queryKey:
-      gameQuery.genre || gameQuery.platform ? ["games", gameQuery] : ["games"],
+      gameQuery.genreId || gameQuery.platformId
+        ? ["games", gameQuery]
+        : ["games"],
     queryFn: ({ pageParam = 1 }) =>
       gameService.getAll({
         params: {
-          genres: gameQuery.genre?.id || "51",
-          parent_platforms: gameQuery.platform?.id,
+          genres: gameQuery.genreId || "51",
+          parent_platforms: gameQuery.platformId,
           ordering: gameQuery.sortOrder,
           search: gameQuery.searchText,
           page: pageParam,

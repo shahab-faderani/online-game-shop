@@ -8,10 +8,10 @@ import styles from "./GenreList.module.css";
 
 interface Props {
   onSelectGenre: (genre: Genre) => void;
-  selectedGenre: Genre | null;
+  selectedGenreId: number;
 }
 
-const GenreList = ({ onSelectGenre, selectedGenre }: Props) => {
+const GenreList = ({ onSelectGenre, selectedGenreId }: Props) => {
   const { data, error, isLoading } = useGenres();
   const { colorMode } = useColorMode();
 
@@ -33,7 +33,7 @@ const GenreList = ({ onSelectGenre, selectedGenre }: Props) => {
               <Card.Root
                 key={genre.id}
                 className={`${styles.card} ${cardClass} ${
-                  genre.id === selectedGenre?.id ? styles.activeCard : ""
+                  genre.id === selectedGenreId ? styles.activeCard : ""
                 }`}
                 onClick={() => onSelectGenre(genre)}
                 tabIndex={0}

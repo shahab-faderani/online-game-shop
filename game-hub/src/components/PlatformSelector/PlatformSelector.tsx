@@ -16,11 +16,11 @@ import { SiNintendoswitch } from "react-icons/si";
 import { Platform } from "@/services/platformService";
 
 interface Props {
-  selectedPlatform: Platform | null;
+  selectedPlatformId?: number;
   onSelectedPlatform: (platform: Platform) => void;
 }
 
-const PlatformSelector = ({ selectedPlatform, onSelectedPlatform }: Props) => {
+const PlatformSelector = ({ selectedPlatformId, onSelectedPlatform }: Props) => {
   const { data, error } = usePlatforms();
   const iconMap: Record<string, JSX.Element> = {
     android: <FaAndroid />,
@@ -34,6 +34,10 @@ const PlatformSelector = ({ selectedPlatform, onSelectedPlatform }: Props) => {
   };
 
   if (error) return null;
+
+  const selectedPlatform = data?.results.find(
+    (platform) => platform.id === selectedPlatformId
+  );
 
   return (
     <Menu.Root>
