@@ -8,16 +8,8 @@ import PlatformSelector from "./components/PlatformSelector";
 import SortSelector from "./components/SortSelector";
 
 import { useState } from "react";
-import { Genre } from "./hooks/useGenres";
-import { Platform } from "./hooks/useGames";
+import { GameQuery } from "./hooks/useGames";
 import GameHeading from "./components/GameHeading";
-
-export interface GameQuery {
-  genre: Genre | null;
-  platform: Platform | null;
-  sortOrder: string;
-  searchText: String;
-}
 
 const App = () => {
   const { colorMode } = useColorMode();
@@ -53,7 +45,7 @@ const App = () => {
           />
         </GridItem>
         <GridItem area="main" paddingX={8} marginBottom={8}>
-          <GameHeading gameQuery={gameQuery}/>
+          <GameHeading gameQuery={gameQuery} />
           <HStack marginBottom={9} gap={5}>
             <PlatformSelector
               selectedPlatform={gameQuery.platform}

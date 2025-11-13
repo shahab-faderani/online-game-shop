@@ -13,7 +13,7 @@ import {
 
 import { MdPhoneIphone } from "react-icons/md";
 import { SiNintendoswitch } from "react-icons/si";
-import { Platform } from "@/hooks/useGames";
+import { Platform } from "@/hooks/usePlatforms";
 
 interface Props {
   selectedPlatform: Platform | null;
@@ -21,7 +21,7 @@ interface Props {
 }
 
 const PlatformSelector = ({ selectedPlatform, onSelectedPlatform }: Props) => {
-  const { data: platforms, error } = usePlatforms();
+  const { data, error } = usePlatforms();
   const iconMap: Record<string, JSX.Element> = {
     android: <FaAndroid />,
     ios: <MdPhoneIphone />,
@@ -45,7 +45,7 @@ const PlatformSelector = ({ selectedPlatform, onSelectedPlatform }: Props) => {
       <Portal>
         <Menu.Positioner>
           <Menu.Content>
-            {platforms.slice(0, 8).map((platform) => (
+            {data?.results.slice(0, 8).map((platform) => (
               <Menu.Item
                 key={platform.id}
                 value={platform.slug}

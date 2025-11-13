@@ -1,4 +1,4 @@
-import { Platform } from "../../hooks/useGames";
+import { Platform } from "../../hooks/usePlatforms";
 import { HStack, Icon } from "@chakra-ui/react";
 import {
   FaWindows,
@@ -16,13 +16,12 @@ import { IconType } from "react-icons";
 import styles from "./PlatformIconList.module.css";
 import { useColorMode } from "../../components/ui/color-mode";
 
-
 interface Props {
   platforms: Platform[];
 }
 
 const PlatformIconList = ({ platforms }: Props) => {
-    const { colorMode } = useColorMode();
+  const { colorMode } = useColorMode();
   const iconMap: { [key: string]: IconType } = {
     pc: FaWindows,
     playstation: FaPlaystation,
@@ -38,7 +37,13 @@ const PlatformIconList = ({ platforms }: Props) => {
   return (
     <HStack>
       {platforms.map((platform) => (
-        <Icon as={iconMap[platform.slug]} className={colorMode === 'light' ? styles.lightModeIcon : styles.darkModeIcon} key={platform.id}/>
+        <Icon
+          as={iconMap[platform.slug]}
+          className={
+            colorMode === "light" ? styles.lightModeIcon : styles.darkModeIcon
+          }
+          key={platform.id}
+        />
       ))}
     </HStack>
   );

@@ -6,15 +6,27 @@ import styles from "./ColorModeSwitch.module.css";
 
 interface Props {
   display?: {
-    base?: "none" | "block" | "flex" | "inline" | "inline-block" | "inline-flex";
+    base?:
+      | "none"
+      | "block"
+      | "flex"
+      | "inline"
+      | "inline-block"
+      | "inline-flex";
     sm?: "none" | "block" | "flex" | "inline" | "inline-block" | "inline-flex";
     md?: "none" | "block" | "flex" | "inline" | "inline-block" | "inline-flex";
     lg?: "none" | "block" | "flex" | "inline" | "inline-block" | "inline-flex";
     xl?: "none" | "block" | "flex" | "inline" | "inline-block" | "inline-flex";
-    "2xl"?: "none" | "block" | "flex" | "inline" | "inline-block" | "inline-flex";
+    "2xl"?:
+      | "none"
+      | "block"
+      | "flex"
+      | "inline"
+      | "inline-block"
+      | "inline-flex";
   };
 }
-const ColorModeSwitch = ({display}: Props) => {
+const ColorModeSwitch = ({ display }: Props) => {
   const { toggleColorMode, colorMode } = useColorMode();
   const useDelayedValue = <T,>(value: T, delay: number): T => {
     const [delayed, setDelayed] = useState(value);
@@ -27,12 +39,16 @@ const ColorModeSwitch = ({display}: Props) => {
     return delayed;
   };
 
-  console.log(display)
-
   const delayedMode = useDelayedValue(colorMode, 100);
 
   return (
-    <Flex p={4} align="center" gap={3} className={styles.wrapper} display={display}>
+    <Flex
+      p={4}
+      align="center"
+      gap={3}
+      className={styles.wrapper}
+      display={display}
+    >
       <ClientOnly fallback={<Skeleton boxSize="8" />}>
         <IconButton
           onClick={toggleColorMode}
