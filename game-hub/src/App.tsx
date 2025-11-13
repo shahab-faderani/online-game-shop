@@ -8,7 +8,7 @@ import PlatformSelector from "./components/PlatformSelector";
 import SortSelector from "./components/SortSelector";
 
 import { useState } from "react";
-import { GameQuery } from "./hooks/useGames";
+import { GameQuery } from "./services/gameService";
 import GameHeading from "./components/GameHeading";
 
 const App = () => {
