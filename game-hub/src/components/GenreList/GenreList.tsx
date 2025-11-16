@@ -1,19 +1,16 @@
 import useGenres from "@/hooks/useGenres";
-import getCroppedImageUrl from "../../services/image-url";
-import { Genre } from "@/services/genreService";
+import useGameQueryStore from "@/stateManagment/games/store";
 import { Card, Heading, Image, VStack } from "@chakra-ui/react";
 import { useColorMode } from "../../components/ui/color-mode";
+import getCroppedImageUrl from "../../services/image-url";
 import GenreListSkeleton from "../GenreListSkeleton";
 import styles from "./GenreList.module.css";
 
-interface Props {
-  onSelectGenre: (genre: Genre) => void;
-  selectedGenreId: number;
-}
-
-const GenreList = ({ onSelectGenre, selectedGenreId }: Props) => {
+const GenreList = () => {
   const { data, error, isLoading } = useGenres();
   const { colorMode } = useColorMode();
+  const selectedGenreId = useGameQueryStore((s) => s.gameQuery.genreId);
+  const setGenreId = useGameQueryStore((s) => s.setGenreId);
 
   const cardClass = colorMode === "light" ? styles.lightCard : styles.darkCard;
 
@@ -35,7 +32,7 @@ const GenreList = ({ onSelectGenre, selectedGenreId }: Props) => {
                 className={`${styles.card} ${cardClass} ${
                   genre.id === selectedGenreId ? styles.activeCard : ""
                 }`}
-                onClick={() => onSelectGenre(genre)}
+                onClick={() => setGenreId(genre.id)}
                 tabIndex={0}
               >
                 <Image

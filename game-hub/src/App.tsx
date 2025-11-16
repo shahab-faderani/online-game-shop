@@ -7,13 +7,13 @@ import GenreList from "./components/GenreList";
 import PlatformSelector from "./components/PlatformSelector";
 import SortSelector from "./components/SortSelector";
 
-import { useState } from "react";
-import { GameQuery } from "./services/gameService";
 import GameHeading from "./components/GameHeading";
+import gameQueryStore from "./stateManagment/games/store";
 
 const App = () => {
   const { colorMode } = useColorMode();
-  const [gameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery);
+  const { gameQuery, setGenreId, setPlatformId, setSearchText, setSortOrder } =
+    gameQueryStore();
 
   return (
     <Theme appearance={colorMode} colorPalette="blackAlpha">
@@ -28,42 +28,23 @@ const App = () => {
         }}
       >
         <GridItem area="nav" paddingX={6}>
-          <NavigationBar
-            onSearch={(searchText) =>
-              setGameQuery({ ...gameQuery, searchText })
-            }
-          />
+          <NavigationBar />
         </GridItem>
         <GridItem
           area="aside"
           display={{ base: "none", lg: "block" }}
           paddingX={8}
         >
-          <GenreList
-            selectedGenreId={gameQuery.genreId}
-            onSelectGenre={(genre) =>
-              setGameQuery({ ...gameQuery, genreId: genre.id })
-            }
-          />
+          <GenreList />
         </GridItem>
         <GridItem area="main" paddingX={8} marginBottom={8}>
-          <GameHeading gameQuery={gameQuery} />
+          <GameHeading />
           <HStack marginBottom={9} gap={5}>
-            <PlatformSelector
-              selectedPlatformId={gameQuery.platformId}
-              onSelectedPlatform={(platform) =>
-                setGameQuery({ ...gameQuery, platformId: platform.id })
-              }
-            />
-            <SortSelector
-              onSelectSortOrder={(sortOrder) =>
-                setGameQuery({ ...gameQuery, sortOrder })
-              }
-              sortOrder={gameQuery.sortOrder}
-            />
+            <PlatformSelector />
+            <SortSelector />
           </HStack>
 
-          <GameGrid gameQuery={gameQuery} />
+          <GameGrid />
         </GridItem>
       </Grid>
     </Theme>

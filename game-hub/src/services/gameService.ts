@@ -11,11 +11,4 @@ export interface Game {
   rating_top: number;
 }
 
-export interface GameQuery {
-  genreId: number;
-  platformId?: number;
-  sortOrder: string;
-  searchText: String;
-}
-
 export default new APIClient<Game>("/games");

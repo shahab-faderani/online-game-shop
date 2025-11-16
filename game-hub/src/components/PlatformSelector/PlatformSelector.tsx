@@ -1,6 +1,7 @@
 import { Menu, Portal, Button } from "@chakra-ui/react";
 import { BsChevronBarDown } from "react-icons/bs";
 import usePlatforms, { usePlatform } from "../../hooks/usePlatforms";
+import useGameQueryStore from "@/stateManagment/games/store";
 
 import {
   FaWindows,
@@ -13,17 +14,8 @@ import {
 
 import { MdPhoneIphone } from "react-icons/md";
 import { SiNintendoswitch } from "react-icons/si";
-import { Platform } from "@/services/platformService";
 
-interface Props {
-  selectedPlatformId?: number;
-  onSelectedPlatform: (platform: Platform) => void;
-}
-
-const PlatformSelector = ({
-  selectedPlatformId,
-  onSelectedPlatform,
-}: Props) => {
+const PlatformSelector = () => {
   const { data, error } = usePlatforms();
   const iconMap: Record<string, JSX.Element> = {
     android: <FaAndroid />,
@@ -38,6 +30,8 @@ const PlatformSelector = ({
 
   if (error) return null;
 
+  const selectedPlatformId = useGameQueryStore((s) => s.gameQuery.platformId);
+  const onSelectedPlatform = useGameQueryStore((s) => s.setPlatformId);
   const selectedPlatform = usePlatform(selectedPlatformId);
 
   return (
@@ -54,7 +48,7 @@ const PlatformSelector = ({
               <Menu.Item
                 key={platform.id}
                 value={platform.slug}
-                onClick={() => onSelectedPlatform(platform)}
+                onClick={() => onSelectedPlatform(platform.id)}
               >
                 {iconMap[platform.slug] ?? null}
                 {platform.name}

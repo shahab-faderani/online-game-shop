@@ -1,20 +1,17 @@
-import { GameQuery } from "@/services/gameService";
 import { Heading } from "@chakra-ui/react";
 import styles from "./GameHeading.module.css";
 import { useGenre } from "@/hooks/useGenres";
 import { usePlatform } from "@/hooks/usePlatforms";
+import useGameQueryStore from "@/stateManagment/games/store";
 
-interface Props {
-  gameQuery: GameQuery;
-}
+const GameHeading = () => {
+  const selectedGenreId = useGameQueryStore((s) => s.gameQuery.genreId);
+  const genre = useGenre(selectedGenreId);
 
-const GameHeading = ({ gameQuery }: Props) => {
-  const selectedGenre = useGenre(gameQuery.genreId);
-  const selectedPlatform = usePlatform(gameQuery.platformId);
+  const selectedPlatformId = useGameQueryStore((s) => s.gameQuery.platformId);
+  const platform = usePlatform(selectedPlatformId);
 
-  const heading = `${selectedPlatform?.name || ""} ${
-    selectedGenre?.name || ""
-  } Games`;
+  const heading = `${platform?.name || ""} ${genre?.name || ""} Games`;
 
   return <Heading className={styles.heading}>{heading}</Heading>;
 };

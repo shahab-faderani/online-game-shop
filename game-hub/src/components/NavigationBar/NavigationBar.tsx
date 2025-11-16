@@ -4,19 +4,12 @@ import styles from "./NavigationBar.module.css";
 import ColorModeSwitch from "../ColorModeSwitch";
 import SearchInput from "../SearchInput";
 
-interface Props {
-  onSearch: (searchText: string) => void;
-}
-
-const NavigationBar = ({ onSearch }: Props) => {
+const NavigationBar = () => {
   return (
     <div>
       <HStack className={styles.HSack} gap="4">
-        <Image
-          src={logo}
-          className={styles.Logo}
-        />
-        <SearchInput onSearch={onSearch} />
+        <Image src={logo} className={styles.Logo} />
+        <SearchInput />
         <ColorModeSwitch display={{ base: "none", md: "flex" }} />
       </HStack>
     </div>
