@@ -1,35 +1,28 @@
 import { Grid, GridItem, HStack, Theme } from "@chakra-ui/react";
-import { useColorMode } from "./components/ui/color-mode";
+import { useColorMode } from "../components/ui/color-mode";
 
-import NavigationBar from "./components/NavigationBar";
-import GameGrid from "./components/GameGrid";
-import GenreList from "./components/GenreList";
-import PlatformSelector from "./components/PlatformSelector";
-import SortSelector from "./components/SortSelector";
+import NavigationBar from "../components/NavigationBar";
+import GameGrid from "../components/GameGrid";
+import GenreList from "../components/GenreList";
+import PlatformSelector from "../components/PlatformSelector";
+import SortSelector from "../components/SortSelector";
 
-import GameHeading from "./components/GameHeading";
-import gameQueryStore from "./stateManagment/games/store";
+import GameHeading from "../components/GameHeading";
 
-const App = () => {
+const HomePage = () => {
   const { colorMode } = useColorMode();
-  const { gameQuery, setGenreId, setPlatformId, setSearchText, setSortOrder } =
-    gameQueryStore();
-
   return (
     <Theme appearance={colorMode} colorPalette="blackAlpha">
       <Grid
         templateAreas={{
-          lg: `"nav nav" "aside main"`,
-          base: `"nav" "main"`,
+          lg: `"aside main"`,
+          base: `"main"`,
         }}
         templateColumns={{
           lg: "18rem 1fr",
           base: "1fr",
         }}
       >
-        <GridItem area="nav" paddingX={6}>
-          <NavigationBar />
-        </GridItem>
         <GridItem
           area="aside"
           display={{ base: "none", lg: "block" }}
@@ -51,4 +44,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default HomePage;
