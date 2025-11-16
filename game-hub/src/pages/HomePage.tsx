@@ -21,11 +21,7 @@ const HomePage = () => {
           base: "1fr",
         }}
       >
-        <GridItem
-          area="aside"
-          display={{ base: "none", lg: "block" }}
-          paddingX={8}
-        >
+        <GridItem area="aside" display={{ base: "none", lg: "block" }}>
           <GenreList />
         </GridItem>
         <GridItem area="main" paddingX={8} marginBottom={8}>
@@ -34,7 +30,6 @@ const HomePage = () => {
             <PlatformSelector />
             <SortSelector />
           </HStack>
-
           <GameGrid />
         </GridItem>
       </Grid>
